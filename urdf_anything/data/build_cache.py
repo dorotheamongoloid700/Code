@@ -313,15 +313,15 @@ def main():
     cache_dir = args.cache_dir
     os.makedirs(cache_dir, exist_ok=True)
     datasets = [
-        {"data_root": "/mnt/world_foundational_model/luoyulin/wzz_temp/urdf/V2/data_normalized/Refrigerator_urdf", "cache_name": "refrigerator_eot"},
-        {"data_root": "/mnt/world_foundational_model/luoyulin/wzz_temp/urdf/V2/data_normalized/Dishwasher_urdf", "cache_name": "dishwasher_eot"},
-        {"data_root": "/mnt/world_foundational_model/luoyulin/wzz_temp/urdf/V2/data_normalized/Microwave_urdf", "cache_name": "microwave_eot"},
-        {"data_root": "/mnt/world_foundational_model/luoyulin/wzz_temp/urdf/V2/data_normalized/Faucet_urdf", "cache_name": "faucet_eot"},
-        {"data_root": "/mnt/world_foundational_model/luoyulin/wzz_temp/urdf/V2/data_normalized/Display_urdf", "cache_name": "display_eot"},
-        {"data_root": "/mnt/world_foundational_model/luoyulin/wzz_temp/urdf/V2/data_normalized/Door_urdf", "cache_name": "door_eot"},
-        {"data_root": "/mnt/world_foundational_model/luoyulin/wzz_temp/urdf/V2/data_normalized/Knife_urdf", "cache_name": "knife_eot"},
-        {"data_root": "/mnt/world_foundational_model/luoyulin/wzz_temp/urdf/V2/data_normalized/Scissors_urdf", "cache_name": "scissors_eot"},
-        {"data_root": "/mnt/world_foundational_model/luoyulin/wzz_temp/urdf/V2/data_normalized/StorageFurniture_urdf", "cache_name": "storagefurniture_eot"},
+        {"data_root": "data_normalized/Refrigerator_urdf", "cache_name": "refrigerator_eot"},
+        {"data_root": "data_normalized/Dishwasher_urdf", "cache_name": "dishwasher_eot"},
+        {"data_root": "data_normalized/Microwave_urdf", "cache_name": "microwave_eot"},
+        {"data_root": "data_normalized/Faucet_urdf", "cache_name": "faucet_eot"},
+        {"data_root": "data_normalized/Display_urdf", "cache_name": "display_eot"},
+        {"data_root": "data_normalized/Door_urdf", "cache_name": "door_eot"},
+        {"data_root": "data_normalized/Knife_urdf", "cache_name": "knife_eot"},
+        {"data_root": "data_normalized/Scissors_urdf", "cache_name": "scissors_eot"},
+        {"data_root": "data_normalized/StorageFurniture_urdf", "cache_name": "storagefurniture_eot"},
     ]
     for dataset_config in datasets:
         try:
