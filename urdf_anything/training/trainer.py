@@ -1,4 +1,3 @@
-"""DiT trainer: model setup, train/validate steps, training loop."""
 import os
 import sys
 import json
@@ -16,11 +15,7 @@ import numpy as np
 from diffusers.schedulers.scheduling_ddpm import DDPMScheduler
 from urdf_anything.model import URDFModel, load_model_config
 
-# Optional wandb
-try:
-    import wandb
-except ImportError:
-    wandb = None
+import wandb
 
 
 class DiTTrainer:
@@ -321,14 +316,14 @@ class DiTTrainer:
                 }
                 if motion_type_pred is not None and urdf_count > 0 and motion_type_loss is not None:
                     log_dict_urdf["train/motion_type_loss"] = motion_type_loss.item()
-                    log_dict_urdf["train/motion_type_accuracy"] = motion_type_accuracy
-                    log_dict_urdf["train/urdf_count"] = urdf_count
-                    unique_labels, counts = torch.unique(
-                        motion_types[urdf_timestep_mask], return_counts=True
-                    )
-                    for label, count in zip(unique_labels, counts):
-                        label_name = "revolute" if label.item() == 0 else "prismatic"
-                        log_dict_urdf[f"train/motion_type_{label_name}_count"] = count.item()
+                    # log_dict_urdf["train/motion_type_accuracy"] = motion_type_accuracy
+                    # log_dict_urdf["train/urdf_count"] = urdf_count
+                    # unique_labels, counts = torch.unique(
+                    #     motion_types[urdf_timestep_mask], return_counts=True
+                    # )
+                    # for label, count in zip(unique_labels, counts):
+                    #     label_name = "revolute" if label.item() == 0 else "prismatic"
+                    #     log_dict_urdf[f"train/motion_type_{label_name}_count"] = count.item()
                 wandb.log(log_dict_urdf)
 
         self.global_step += 1

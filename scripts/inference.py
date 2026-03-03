@@ -34,7 +34,7 @@ def main():
         default=None,
         help="Whole mesh file (required when not --in_the_wild)",
     )
-    parser.add_argument("--output_dir", type=str, default="output_faucet_1")
+    parser.add_argument("--output_dir", type=str, default="outputs")
     parser.add_argument("--no_save_meshes", action="store_true")
     parser.add_argument("--no_save_urdf", action="store_true")
     parser.add_argument(

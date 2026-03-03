@@ -1,4 +1,3 @@
-"""Cache IO: load/save index, load single item, split train/test by object."""
 import os
 import json
 import random
@@ -34,7 +33,7 @@ def load_single_data_item(
             if item["id"] == item_id:
                 if whole_image_name is None:
                     raise ValueError(
-                        "需要提供 whole_image_name 来获取对应的 dino_features"
+                        "whole_image_name is required to get corresponding dino_features"
                     )
                 result = item.copy()
                 result["encode_whole"] = obj_cache_data["encode_whole"]
@@ -82,7 +81,6 @@ def load_single_data_item(
 
 
 def load_train_test_split(split_path):
-    """从 JSON 加载 train / test 的 obj_id 列表。格式：{"train": [...], "test": [...]}。返回 (train_ids, test_ids) 均为 set(str)。"""
     with open(split_path, "r", encoding="utf-8") as f:
         data = json.load(f)
     train_ids = set(str(x) for x in data.get("train", []))
@@ -91,7 +89,6 @@ def load_train_test_split(split_path):
 
 
 def split_cache_by_object(cache_path, train_ratio=0.9, random_seed=42, train_test_split_path=None):
-    """按物体划分 train/test 并写回。若提供 train_test_split_path，则直接使用 JSON 中的 train / test id 列表。"""
     print(f"\nre-split cache by object: {cache_path}")
     full_data_path = os.path.join(cache_path, "full_data.pt")
     if not os.path.exists(full_data_path):
@@ -100,7 +97,6 @@ def split_cache_by_object(cache_path, train_ratio=0.9, random_seed=42, train_tes
     if train_test_split_path and os.path.isfile(train_test_split_path):
         train_obj_ids, test_obj_ids = load_train_test_split(train_test_split_path)
         print(f"  using train/test split: {train_test_split_path} (train {len(train_obj_ids)}, test {len(test_obj_ids)} ids)")
-        # 未出现在 JSON 中的 obj_id 划入 train
         for d in all_data:
             oid = str(d["obj_id"])
             if oid not in train_obj_ids and oid not in test_obj_ids:

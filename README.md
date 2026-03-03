@@ -71,13 +71,15 @@ snapshot_download(repo_id='facebook/dinov3-vith16plus-pretrain-lvd1689m', local_
 "
 ```
 
+Important: There is a little problem with TripoSG/triposg/models/autoencoders/autoencoder_kl_triposg.py, you need to uncomment the line `from torch_cluster import fps`.
+
 ## Training
 ### Data Preparation
-Download the dataset from [Hugging Face](https://huggingface.co/datasets/zhuangzhe1229/test_dataset) and unzip it to `data_normalized/`.
+Download the dataset from [Hugging Face](https://huggingface.co/datasets/URDF-Anything-plus/Dataset) and unzip it to `data_normalized/`.
 
 The structure of the dataset is as follows:
 ```
-URDF-Anything+ dataset:
+URDF-Anything-plus:
 ├── data_normalized/
 │   ├── Laptop_urdf/
 │   │   ├── images/
@@ -99,8 +101,22 @@ python scripts/build_cache.py
 
 ### Training
 ```bash
-bash scripts/run_multi_node_training.sh
+bash scripts/run_multi_node_training.sh [node_rank] [master_addr] [nproc_per_node] [training parameters...]
+```
+For example, to train on 1 machine with 8 GPUs, you can run:
+```bash
+bash scripts/run_multi_node_training.sh 0 localhost 8
 ```
 You can adjust the training parameters in `scripts/run_multi_node_training.sh`.
 
-
+In pretraining stage, we use the following hyperparameters:
+```yaml
+--init_mode train_from_scratch
+```
+In finetuning stage, we use the following hyperparameters:
+```yaml
+--init_mode resume_from_ckpt
+--checkpoint_path CHECKPOINT_PATH FROM PRETRAINING STAGE
+--train_urdf_params True
+--train_eot True
+```

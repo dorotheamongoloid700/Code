@@ -1,4 +1,3 @@
-"""Build training cache: encode OBJ + DINO, save per-object .pt and train/test split."""
 import os
 import json
 import random
@@ -312,6 +311,7 @@ def main():
     cache_dir = args.cache_dir
     os.makedirs(cache_dir, exist_ok=True)
     datasets = [
+        {"data_root": "data_normalized/Laptop_urdf", "cache_name": "laptop_eot"},
         {"data_root": "data_normalized/Refrigerator_urdf", "cache_name": "refrigerator_eot"},
         {"data_root": "data_normalized/Dishwasher_urdf", "cache_name": "dishwasher_eot"},
         {"data_root": "data_normalized/Microwave_urdf", "cache_name": "microwave_eot"},
