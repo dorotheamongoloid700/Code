@@ -329,22 +329,23 @@ class URDFInference:
                     )
                     result["pred_mesh"].export(mesh_path)
                     print(f"  saving mesh: {mesh_path}")
-                if result["param1"] is not None:
-                    print(f"  Origin: {result['param1'].numpy()}")
-                if result["param2"] is not None:
-                    print(f"  Axis: {result['param2'].numpy()}")
-                if result["param3"] is not None:
-                    print(f"  Limits: {result['param3'].numpy()}")
-                if result["motion_type"] is not None:
-                    motion_type_class = torch.argmax(
-                        result["motion_type"]
-                    ).item()
-                    motion_name = (
-                        "revolute"
-                        if motion_type_class == 0
-                        else "prismatic"
-                    )
-                    print(f"  Motion Type: {motion_name}")
+                if link_idx > 0:
+                    if result["param1"] is not None:
+                        print(f"  Origin: {result['param1'].numpy()}")
+                    if result["param2"] is not None:
+                        print(f"  Axis: {result['param2'].numpy()}")
+                    if result["param3"] is not None:
+                        print(f"  Limits: {result['param3'].numpy()}")
+                    if result["motion_type"] is not None:
+                        motion_type_class = torch.argmax(
+                            result["motion_type"]
+                        ).item()
+                        motion_name = (
+                            "revolute"
+                            if motion_type_class == 0
+                            else "prismatic"
+                        )
+                        print(f"  Motion Type: {motion_name}")
             all_results.append({"link_idx": link_idx, **result})
             encode_pre = self.encode_prev_meshes(prev_meshes)
             link_idx += 1

@@ -1,4 +1,3 @@
-"""TripoSG 3D generation from image: load script by path, run inference."""
 import os
 import sys
 import importlib.util
@@ -24,6 +23,7 @@ def get_3d_triposg(
     target_faces: int = -1,
     triposg_weights_dir: str | None = None,
     rmbg_weights_dir: str | None = None,
+    output_dir: str | None = None,
     fix_normals: bool = True,
 ):
     """Generate 3D mesh from image using TripoSG (image-to-3D)."""
@@ -103,11 +103,12 @@ def get_3d_triposg(
             raise ValueError(
                 f"Cannot convert mesh to trimesh.Trimesh: {type(mesh)}"
             )
-    mesh.export(os.path.join(_CODES_DIR, "output", "mesh_for_edit.obj"))
+    mesh.export(os.path.join(output_dir, "mesh_for_edit.obj"))
 
     print("\n可选：在终端中对 mesh 做简单旋转。可多次旋转，直接回车结束。")
     print("  0: 不旋转（直接回车也等价于结束）")
     print("  1-6: 围绕 X/Y/Z 轴 ±90°")
+
     angle_map = {
         "1": (np.pi / 2, [1, 0, 0]),
         "2": (-np.pi / 2, [1, 0, 0]),
@@ -116,6 +117,15 @@ def get_3d_triposg(
         "5": (np.pi / 2, [0, 0, 1]),
         "6": (-np.pi / 2, [0, 0, 1]),
     }
+    angle_map_print = {
+        "1": "绕X轴旋转90度",
+        "2": "绕X轴旋转-90度",
+        "3": "绕Y轴旋转90度",
+        "4": "绕Y轴旋转-90度",
+        "5": "绕Z轴旋转90度",
+        "6": "绕Z轴旋转-90度",
+    }
+    print(f"angle_map_print: {angle_map_print}")
     while True:
         try:
             choice = input(
@@ -130,7 +140,7 @@ def get_3d_triposg(
             R = trimesh.transformations.rotation_matrix(angle, axis_vec)
             mesh.apply_transform(R)
             mesh.export(
-                os.path.join(_CODES_DIR, "output", "mesh_for_edit.obj")
+                os.path.join(output_dir, "mesh_for_edit.obj")
             )
         else:
             print("输入无效，请输入 0–6，或直接回车结束。")

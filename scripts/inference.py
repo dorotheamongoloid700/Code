@@ -89,6 +89,8 @@ def main():
             device=args.device,
             triposg_weights_dir=args.triposg_weights_dir,
             rmbg_weights_dir=args.rmbg_weights_dir,
+            # target_faces=10000, 
+            output_dir=args.output_dir,
         )
         whole_mesh.export(os.path.join(args.output_dir, "whole.obj"))
         whole_mesh_path = None

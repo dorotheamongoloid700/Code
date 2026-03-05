@@ -120,3 +120,17 @@ In finetuning stage, we use the following hyperparameters:
 --train_urdf_params True
 --train_eot True
 ```
+
+## Inference
+```bash
+bash scripts/inference.sh
+```
+If you are in 'in_the_wild' mode, you need to check the orientation of the generated mesh:
+```bash
+可选：在终端中对 mesh 做简单旋转。可多次旋转，直接回车结束。
+  0: 不旋转（直接回车也等价于结束）
+  1-6: 围绕 X/Y/Z 轴 ±90°
+angle_map_print: {'1': '绕X轴旋转90度', '2': '绕X轴旋转-90度', '3': '绕Y轴旋转90度', '4': '绕Y轴旋转-90度', '5': '绕Z轴旋转90度', '6': '绕Z轴旋转-90度'}
+输入旋转编号并回车（直接回车=确认并结束旋转）[0-6]: 
+```
+You need to make sure the object is oriented towards the positive z direction.
